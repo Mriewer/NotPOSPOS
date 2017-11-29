@@ -1,8 +1,9 @@
 #ifndef ORDER_H
 #define ORDER_H
 #include "IOrder.h"
+#include "ObserverPattern.cpp"
 
-class order : public IOrder
+class order : public IOrder : public Observable
 {
   private:
     std::vector<item> itemList;
@@ -12,6 +13,7 @@ class order : public IOrder
     order();
     order(double);
   public:
+    void update(){ notifyObservers(); }
     void addItem(item);
     std::vector <item> getItems();
     double getSubtotal();
